@@ -1,0 +1,4 @@
+user_validation:
+  path: /payment
+  controller: App\Infrastructure\Controller\PaymentController::create
+  methods: [POST]
