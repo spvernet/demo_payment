@@ -9,7 +9,9 @@
 namespace App\Domain\Manager;
 
 
+use App\Domain\Core\PaymentRequest;
+
 interface PaymentGatewayInterface
 {
-
+    public function send(PaymentRequest $paymentRequest);
 }

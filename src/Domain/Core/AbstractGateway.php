@@ -11,7 +11,6 @@ namespace App\Domain\Core;
 
 use App\Domain\Manager\PaymentGatewayInterface;
 
-class AbstractGateway implements PaymentGatewayInterface
+abstract class AbstractGateway implements PaymentGatewayInterface
 {
-
 }

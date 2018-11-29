@@ -9,6 +9,7 @@
 namespace App\Infrastructure\Service\Payment;
 
 
+use App\Domain\Usecase\PaymentCreated\PaymentRedsysRequest;
 use Psr\Http\Message\RequestInterface;
 
 class PaymentRedsysService extends Chainable
@@ -20,10 +21,17 @@ class PaymentRedsysService extends Chainable
     }
 
 
-    protected function processing(/*RequestInterface $request*/)
+    protected function processing(array $request)
     {
-        // TODO: Implement processing() method.
-        return null;
-        return ["array_redsys"];
+        if(!isset($request['card_number'])){
+            return null;
+        }
+
+        $command = new PaymentRedsysRequest($request['amount'],
+            $request['full_name'], $request['card_number'], $request['expiration'], $request['cvv']);
+
+        return $command;
+
+        return $request;
     }
 }

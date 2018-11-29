@@ -9,6 +9,7 @@
 namespace App\Infrastructure\Service\Payment;
 
 
+use App\Domain\Usecase\PaymentCreated\PaymentPaypalRequest;
 use Psr\Http\Message\RequestInterface;
 
 class PaymentPaypalService extends Chainable
@@ -19,9 +20,15 @@ class PaymentPaypalService extends Chainable
         parent::__construct($successor);
     }
 
-    protected function processing(/*RequestInterface $request*/)
+    protected function processing(array $request)
     {
-        // TODO: Implement processing() method.
-        return ['array_paypal'];
+        if(!isset($request['email'])) {
+           return null;
+        }
+
+        $command = new PaymentPaypalRequest($request['amount'],
+            $request['email'], $request['password']);
+
+        return $command;
     }
 }
