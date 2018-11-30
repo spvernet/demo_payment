@@ -28,10 +28,9 @@ class PaymentRedsysService extends Chainable
         }
 
         $command = new PaymentRedsysRequest($request['amount'],
-            $request['full_name'], $request['card_number'], $request['expiration'], $request['cvv']);
+            $request['full_name'], $request['card_number'],
+            $request['expiration'], $request['cvv']);
 
         return $command;
-
-        return $request;
     }
 }

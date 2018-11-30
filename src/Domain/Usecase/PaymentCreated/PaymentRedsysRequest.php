@@ -86,6 +86,8 @@ class PaymentRedsysRequest implements PaymentRequest
 
     public function isValid(): bool
     {
+        //WATCH OUT! this is a simple validation, we could validate that expiration is > than now, that the amount is positive, etc.
+
         return !($this->full_name ==null ||
             $this->amount ==null ||
             $this->card_number ==null ||

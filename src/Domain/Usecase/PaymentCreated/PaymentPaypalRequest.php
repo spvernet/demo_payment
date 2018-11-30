@@ -59,6 +59,8 @@ class PaymentPaypalRequest implements PaymentRequest
 
     public function isValid(): bool
     {
+        //WATCH OUT! this is a simple validation, we could validate that email is an email, that the amount is positive, etc.
+
         return !($this->email == null || $this->password == null || $this->amount == null);
     }
 

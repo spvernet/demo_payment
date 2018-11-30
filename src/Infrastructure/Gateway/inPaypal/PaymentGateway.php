@@ -18,8 +18,8 @@ class PaymentGateway extends AbstractGateway
     public function send(PaymentRequest $paymentRequest)
     {
         // This function, would send the information on paypal api.
-        // If everything is correct, would receive a payment ID.
+        // If everything is correct, would receive "done paypal" (in a real case, we'd receive other kind of information)
         // Otherwise would receive null;
-        return "10007";
+        return "done Paypal";
     }
 }

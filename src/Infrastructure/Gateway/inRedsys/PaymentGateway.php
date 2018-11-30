@@ -12,9 +12,9 @@ class PaymentGateway extends AbstractGateway
     public function send(PaymentRequest $paymentRequest)
     {
         // This function, would send the information on redsys api.
-        // If everything is correct, would receive a payment ID.
+        // If everything is correct, "done redsys" (in a real case, we'd receive other kind of information)
         // Otherwise would receive null;
-        return "20008";
+        return "done redsys";
 
     }
 }
