@@ -32,8 +32,8 @@ particular services selected for it.
 
 ### Solution
 
-**Exercise 1** is located in folder: **"docs/proposal"**
-**Exercise 4** is located in folder: **"docs/aws"**
+- **Exercise 1** is located in folder: **"docs/proposal"**
+- **Exercise 4** is located in folder: **"docs/aws"**
 
 To execute **Exercise 2 and Exercise 3** execute the following instructions:
 

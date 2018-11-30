@@ -24,7 +24,7 @@
 
 - **The consumer** will adapt the information and then, it **will send that information to other microservice** using and api call to notify that the payment is done. *(step 8 block diagram)*
 
-### Considerations:
+Considerations:
 - we use chain of responsibility to decouple sender of a request and receiver of the request.
 
 - I choose kafka as a queue system in order to have more configuration options and performance than other queue systems. However, kafka does not have a good implementation in php, for this reason the consumer would be build in java
