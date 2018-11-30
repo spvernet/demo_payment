@@ -22,7 +22,7 @@ class PaymentDoneEvent extends Event
         $this->payment = $payment;
     }
 
-    public function getOrder()
+    public function getPayment()
     {
         return $this->payment;
     }
