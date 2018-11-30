@@ -17,6 +17,9 @@ class PaymentRedsysRequest implements PaymentRequest
 {
 
     /** @var string */
+    private $amount;
+
+    /** @var string */
     private $full_name;
 
     /** @var string */
@@ -28,8 +31,6 @@ class PaymentRedsysRequest implements PaymentRequest
     /** @var string */
     private $cvv;
 
-    /** @var string */
-    private $amount;
 
     public function __construct(?string $amount = null,
                                 ?string $full_name = null,

@@ -21,15 +21,15 @@ class PaymentRedsysService extends Chainable
     }
 
 
-    protected function processing(array $request)
+    protected function processing(array $request) :?PaymentRequest
     {
         if(!isset($request['card_number'])){
             return null;
         }
 
-        $command = new PaymentRedsysRequest($request['amount'],
-            $request['full_name'], $request['card_number'],
-            $request['expiration'], $request['cvv']);
+        $command = new PaymentRedsysRequest($request['amount']??null,
+            $request['full_name']??null, $request['card_number']??null,
+            $request['expiration']??null, $request['cvv']??null);
 
         return $command;
     }

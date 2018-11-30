@@ -15,7 +15,7 @@ use App\Domain\Core\PaymentRequest;
 use App\Domain\Event\PaymentDoneEvent;
 use App\Domain\Manager\PaymentGatewayInterface;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PaymentCreatedUsecase extends AbstractUsecase
@@ -26,7 +26,7 @@ class PaymentCreatedUsecase extends AbstractUsecase
     /** @var PaymentGatewayInterface */
     protected $gateway;
 
-    /** @var EventDispatcher */
+    /** @var EventDispatcherInterface */
     protected $eventDispacher;
 
     /** @var LoggerInterface  */
@@ -34,7 +34,7 @@ class PaymentCreatedUsecase extends AbstractUsecase
 
     public function __construct(PaymentRequest $paymentRequest,
                                 PaymentGatewayInterface $gateway,
-                                EventDispatcher $eventDispatcher,
+                                EventDispatcherInterface $eventDispatcher,
                                 LoggerInterface $logger)
     {
         $this->paymentRequest = $paymentRequest;
@@ -46,8 +46,8 @@ class PaymentCreatedUsecase extends AbstractUsecase
     public function execute()
     {
         if (!$this->paymentRequest->isValid()) {
-            $this->logger->error('some information is not valid', ['payment.validation']);
-            return new JsonResponse('field or value field not allowed', self::CODE_BAD_REQUEST);
+            $this->logger->error('field or value field not allowed', ['payment.validation']);
+            return new JsonResponse('field or value field not allowed', AbstractOutput::CODE_BAD_REQUEST);
         }
 
         $payment = $this->gateway->send($this->paymentRequest);

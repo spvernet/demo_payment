@@ -40,6 +40,7 @@ class PaymentController
                 $logger);
 
         }catch (PaymentRequestException $exception){
+            $logger->error($exception->getMessage(), ['payment.request']);
             return new JsonResponse($exception->getMessage(), AbstractOutput::CODE_BAD_REQUEST);
         }
 

@@ -1,0 +1,87 @@
+@startuml
+
+
+
+namespace Domain{
+
+    namespace Core #DDDDDD {
+      interface PaymentRequest {
+        + isValid(): bool;
+        +  getGateway(): AbstractGateway;
+      }
+    }
+
+    namespace Usecase\PaymentCreated #DDDDDD {
+      class PaymentCreatedUsecase {
+          - $paymentRequest;
+          - $gateway;
+          - $eventDispacher;
+          - $logger;
+        + __construct()
+        + execute()
+      }
+
+      note top of PaymentCreatedUsecase
+            This is our usecase or application service.
+        end note
+
+      class PaymentPaypalRequest {
+          - $email;
+          - $password;
+          - $amount;
+        + __construct()
+        + isValid(): bool
+        + getGateway(): AbstractGateway
+      }
+
+      class PaymentRedsysRequest {
+          - $amount;
+          - $full_name;
+          - $card_number;
+          - $expiration;
+          - $cvv;
+          + __construct()
+          + isValid(): bool
+          + getGateway(): AbstractGateway
+      }
+
+      PaymentPaypalRequest --|> Domain.Core.PaymentRequest
+      PaymentRedsysRequest --|> Domain.Core.PaymentRequest
+
+    }
+}
+
+
+namespace Infrastructure {
+
+   namespace Service\Payment #DDDDDD {
+        abstract class Chainable {
+          - $successor = null;
+          + __construct(?Chainable $successor)
+          + handle(array $request): ?array
+          #{abstract} processing(array $request): ?array
+        }
+
+        class PaymentPaypalService {
+            + __construct(array $request)
+            #processing(array $request) :?PaymentRequest
+        }
+        note top of PaymentPaypalService
+            This is the "fallback". If is not a credit cad, we check if is paypal.
+        end note
+
+        class PaymentRedsysService {
+            + __construct(array $request)
+            #processing(array $request) :?PaymentRequest
+        }
+        note top of PaymentRedsysService
+            Check if is a credit card
+        end note
+
+        PaymentRedsysService ..|> Chainable
+        PaymentPaypalService ..|> Chainable
+
+    }
+}
+
+@enduml
