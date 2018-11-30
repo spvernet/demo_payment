@@ -9,9 +9,9 @@ gateways (i.e. LocalBilling), PayPal like solutions, Money-less payment solution
 Paygarden) and CryptoCurrencies.
 - A particular payment should be potentially sent in a fallback strategy to a different
 compatible gateway in case of a decline or in a particular set of conditions (i.e. risk level)
-- The system must offer a payment solution to all CMP product catalogue with their own
+- The system must offer a payment solution to all company product catalogue with their own
 look & feel but from a centralised service approach.
-- Billing context needs to notify about the results to other applications / parts of CMP
+- Billing context needs to notify about the results to other applications / parts of company
 system (i.e. Membership management)
 - Extensive logging (audit logs) and transaction traceability are a must.
 
