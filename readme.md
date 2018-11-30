@@ -32,10 +32,10 @@ particular services selected for it.
 
 ### Solution
 
-Exercise 1 is located in folder: "docs/proposal"
-Exercise 4 is located in folder: "docs/aws"
+**Exercise 1** is located in folder: **"docs/proposal"**
+**Exercise 4** is located in folder: **"docs/aws"**
 
-To execute Exercise 2 and 3 execute the following instructions:
+To execute **Exercise 2 and Exercise 3** execute the following instructions:
 
 First of all, you need to do a "git clone" of this project and after that, composer install:
 ```
