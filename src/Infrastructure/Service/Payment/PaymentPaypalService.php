@@ -21,7 +21,7 @@ class PaymentPaypalService extends Chainable
         parent::__construct($successor);
     }
 
-    protected function processing(array $request) :?PaymentRequest
+    protected function processing(array $request)
     {
         if(!isset($request['email'])) {
            return null;

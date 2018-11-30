@@ -64,7 +64,7 @@ namespace Infrastructure {
 
         class PaymentPaypalService {
             + __construct(array $request)
-            #processing(array $request) :?PaymentRequest
+            #processing(array $request)
         }
         note top of PaymentPaypalService
             This is the "fallback". If is not a credit cad, we check if is paypal.
@@ -72,7 +72,7 @@ namespace Infrastructure {
 
         class PaymentRedsysService {
             + __construct(array $request)
-            #processing(array $request) :?PaymentRequest
+            #processing(array $request)
         }
         note top of PaymentRedsysService
             Check if is a credit card
